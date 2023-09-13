@@ -77,6 +77,7 @@ function App() {
           <>
             <AuthForm submit={ register } txt='Register'/>
             <AuthForm submit={ login } txt='Login'/>
+            <Link to='/about_us'>About Us</Link>
           </>
         )
       }
