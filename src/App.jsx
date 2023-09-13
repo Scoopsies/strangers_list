@@ -59,7 +59,7 @@ function App() {
 
   return (
     <>
-      <h1>Strangers Things ({ posts.length })</h1>
+      <h1><Link to='/'>Strangers Things ({ posts.length })</Link></h1>
       {
         auth.username ? (
           <div>
