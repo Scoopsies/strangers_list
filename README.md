@@ -32,7 +32,7 @@
 - [] A user should be able to update their posts on the detail page. 
 - [] After a user updates their post, they should be navigated back to the / page.
 - [] A user should be able to view the site on mobile device.
-- [] Prices which are not numbers, should be displayed correctly.
+- [x] Prices which are not numbers, should be displayed correctly.
 - [] A user should be able to add a location to their posts (see api documentation).
 - [] The location should appear in the post listing
 - [] The welcome message should show the number of posts the logged in user has.

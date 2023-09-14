@@ -10,3 +10,8 @@ form > * {
 .mine {
   font-weight: bold;
 }
+
+nav {
+  display: flex;
+  justify-content: space-around;
+}

@@ -5,6 +5,7 @@ import CreatePost from './components/CreatePost';
 import Posts from './components/Posts';
 import Post from './components/Post';
 import AboutUs from './components/AboutUs';
+import MostExpensive from './components/MostExpensive';
 
 import { useNavigate, useParams, Link, Routes, Route } from 'react-router-dom';
 
@@ -56,6 +57,10 @@ function App() {
     navigate(`/posts/${post._id}`);
   };
 
+  const deletePost = async()=> {
+     await api.deletePost();
+  }
+
 
   return (
     <>
@@ -67,8 +72,11 @@ function App() {
               Welcome { auth.username }
               <button onClick={ logout }>Logout</button>
             </h1>
-            <Link to='/posts/create'>Create A Post</Link>
-            <Link to='/about_us'>About Us</Link>
+            <nav>
+              <Link to='/posts/create'>Create A Post</Link>
+              <Link to='/about_us'>About Us</Link>
+              <Link to='/most_expensive'>Most Expensive Item</Link>
+            </nav>
             <Routes>
               <Route path='/posts/create' element={ <CreatePost createPost={ createPost } />} />
             </Routes>
@@ -78,13 +86,16 @@ function App() {
             <AuthForm submit={ register } txt='Register'/>
             <AuthForm submit={ login } txt='Login'/>
             <Link to='/about_us'>About Us</Link>
+            <Link to='/most_expensive'>Most Expensive Item</Link>
           </>
         )
       }
       <Posts posts={ posts } auth={ auth }/>
       <Routes>
-        <Route path='/posts/:id' element={ <Post posts={ posts } auth={ auth }/>} />
+        <Route path='/posts/:id' element={ <Post posts={ posts } auth={ auth } deletePost={deletePost}/>} />
         <Route path='/about_us' element={ <AboutUs />} />
+        <Route path='/' element={null}></Route>
+        <Route path='/most_expensive' element={<MostExpensive/>}></Route>
       </Routes>
     </>
   )
