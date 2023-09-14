@@ -12,7 +12,7 @@ const Post = ({ posts, auth })=> {
     <div>
       <h1>{ post.title }</h1>
       <h2>Listing by: {post.author.username}</h2>
-      {console.log(post.author.username)}
+      <p>{post.description}</p>
       { auth._id === post.author._id ? <button>x</button>: ''}
     </div>
   );
