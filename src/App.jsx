@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 import api from './api';
-import AuthForm from './AuthForm';
-import CreatePost from './CreatePost';
-import Posts from './Posts';
-import Post from './Post';
-import AboutUs from './AboutUs';
+import AuthForm from './components/AuthForm';
+import CreatePost from './components/CreatePost';
+import Posts from './components/Posts';
+import Post from './components/Post';
+import AboutUs from './components/AboutUs';
 
 import { useNavigate, useParams, Link, Routes, Route } from 'react-router-dom';
 

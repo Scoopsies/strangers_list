@@ -1,7 +1,7 @@
 const AboutUs = ()=> {
   return (
     <div>
-      TODO: Add some information about Us!
+      We are an open source alternative to Crag's Mist. Feel free to 
     </div>
   );
 };

@@ -11,6 +11,8 @@ const Post = ({ posts, auth })=> {
   return (
     <div>
       <h1>{ post.title }</h1>
+      <h2>Listing by: {post.author.username}</h2>
+      {console.log(post.author.username)}
       { auth._id === post.author._id ? <button>x</button>: ''}
     </div>
   );
