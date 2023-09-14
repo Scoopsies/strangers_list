@@ -57,8 +57,12 @@ function App() {
     navigate(`/posts/${post._id}`);
   };
 
-  const deletePost = (post)=> {
-    api.deletePost(post)
+  const deletePost = async (post)=> {
+    const filtered = posts.filter(item => item._id !== post)
+    await api.deletePost(post)
+    console.log(filtered)
+    setPosts([...filtered])
+    navigate('/')
   }
 
 
