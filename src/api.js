@@ -55,17 +55,19 @@ const createPost = async(post)=> {
   return response.data.data.post;
 };
 
-const deletePost = async(post)=> {
+const deletePost = async (id)=> {
   const token = window.localStorage.getItem('token');
-  const response = await axios.delete(
-    `${BASE_URL}/posts`,
-    { post },
+  console.log(id)
+  await axios.delete(
+    `${BASE_URL}/posts/${id}`,
+    
     {
       headers: {
         authorization: `Bearer ${ token }`
       }
     }
   );
+  
 };
 
 const login = async(credentials)=> {

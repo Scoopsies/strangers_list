@@ -57,8 +57,8 @@ function App() {
     navigate(`/posts/${post._id}`);
   };
 
-  const deletePost = async()=> {
-     await api.deletePost();
+  const deletePost = (post)=> {
+    api.deletePost(post)
   }
 
 
@@ -85,8 +85,10 @@ function App() {
           <>
             <AuthForm submit={ register } txt='Register'/>
             <AuthForm submit={ login } txt='Login'/>
-            <Link to='/about_us'>About Us</Link>
-            <Link to='/most_expensive'>Most Expensive Item</Link>
+            <nav>
+              <Link to='/about_us'>About Us</Link>
+              <Link to='/most_expensive'>Most Expensive Item</Link>
+            </nav>
           </>
         )
       }

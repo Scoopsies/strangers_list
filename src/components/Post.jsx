@@ -15,7 +15,7 @@ const Post = ({ posts, auth, deletePost })=> {
       <h1>{ post.title }</h1>
       <h2>Listing by: {post.author.username}</h2>
       <p>{post.description}</p>
-      { auth._id === post.author._id ? <button onClick={() => deletePost()}>x</button>: ''}
+      { auth._id === post.author._id ? <button onClick={() => deletePost(id)}>x</button>: ''}
     </div>
   );
 };
