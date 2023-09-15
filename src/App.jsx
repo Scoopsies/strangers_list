@@ -5,15 +5,18 @@ import CreatePost from './components/CreatePost';
 import Posts from './components/Posts';
 import Post from './components/Post';
 import AboutUs from './components/AboutUs';
-import MostExpensive from './components/MostExpensive';
+import Welcome from './components/Welcome';
 
 import { useNavigate, useParams, Link, Routes, Route } from 'react-router-dom';
+import ContactUs from './components/ContactUs';
 
 function App() {
   const [auth, setAuth] = useState({});
   const [posts, setPosts] = useState([]);
 
   const navigate = useNavigate();
+
+
 
   useEffect(()=> {
     const fetchPosts = async()=> {
@@ -54,6 +57,8 @@ function App() {
   const createPost = async(post)=> {
     post = await api.createPost(post);
     setPosts([...posts, post]);
+    console.log(auth)
+    setAuth(auth)
     navigate(`/posts/${post._id}`);
   };
 
@@ -65,6 +70,22 @@ function App() {
     navigate('/')
   }
 
+  const modifyPost = async (post)=> {
+    post = await api.modifyPost(post);
+    console.log(post)
+  }
+
+  const highestPrice = ()=> {
+    if (posts.length > 0) {let highestprice = -Infinity;
+    posts.forEach(item => {
+      if (item.price*1 > highestprice) highestprice = item.price;
+    })
+    highestprice = posts.find(item => item.price === highestprice)
+    return highestprice._id; } 
+    return null;
+  }
+
+
 
   return (
     <>
@@ -72,17 +93,21 @@ function App() {
       {
         auth.username ? (
           <div>
-            <h1>
-              Welcome { auth.username }
-              <button onClick={ logout }>Logout</button>
-            </h1>
+            <Welcome auth={auth} posts={posts} logout={logout}/>
+
             <nav>
               <Link to='/posts/create'>Create A Post</Link>
               <Link to='/about_us'>About Us</Link>
-              <Link to='/most_expensive'>Most Expensive Item</Link>
+              <Link to='/contact_us'>Contact Us</Link>
+              <Link to={`/posts/${highestPrice()}`}>Highest Listing</Link>
             </nav>
+
             <Routes>
-              <Route path='/posts/create' element={ <CreatePost createPost={ createPost } />} />
+              <Route path='/posts/create' element={<CreatePost createPost={createPost}/>}/>
+              <Route path='/posts/:id' element={null} />
+              <Route path='/about_us' element={null} />
+              <Route path='/' element={null} />
+              <Route path='/contact_us' element={null} />
             </Routes>
           </div>
         ): (
@@ -91,17 +116,26 @@ function App() {
             <AuthForm submit={ login } txt='Login'/>
             <nav>
               <Link to='/about_us'>About Us</Link>
-              <Link to='/most_expensive'>Most Expensive Item</Link>
+              <Link to='/contact_us'>Contact Us</Link>
+              <Link to={`/posts/${highestPrice()}`}>Highest Listing</Link>
             </nav>
           </>
         )
       }
       <Posts posts={ posts } auth={ auth }/>
       <Routes>
-        <Route path='/posts/:id' element={ <Post posts={ posts } auth={ auth } deletePost={deletePost}/>} />
+        <Route path='/posts/:id' element=
+        { 
+        <Post 
+          posts={ posts } 
+          auth={ auth } 
+          deletePost={deletePost}
+          modifyPost={modifyPost} 
+        />
+        }/>
         <Route path='/about_us' element={ <AboutUs />} />
-        <Route path='/' element={null}></Route>
-        <Route path='/most_expensive' element={<MostExpensive/>}></Route>
+        <Route path='/' element={null} />
+        <Route path='/contact_us' element={<ContactUs />} />
       </Routes>
     </>
   )

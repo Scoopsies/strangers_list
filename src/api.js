@@ -67,8 +67,21 @@ const deletePost = async (id)=> {
       }
     }
   );
-  
 };
+
+const modifyPost = async (post)=> {
+  const token = window.localStorage.getItem('token')
+  const response = await axios.patch(
+    `${BASE_URL}/posts/${post.id}`,
+    { post },
+    {
+      headers: {
+        authorization: `Bearer ${ token }`
+      }
+    }
+  );
+  return response.data.data.post;
+}
 
 const login = async(credentials)=> {
   const response = await axios.post(
@@ -88,7 +101,8 @@ const api = {
   loginWithToken,
   fetchPosts,
   createPost,
-  deletePost
+  deletePost,
+  modifyPost
 
 };
 

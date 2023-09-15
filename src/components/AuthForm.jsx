@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import api from '../api';
-
 
 const AuthForm = (props)=> {
   const [ username, setUsername ] = useState('');
