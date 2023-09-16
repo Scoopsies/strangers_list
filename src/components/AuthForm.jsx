@@ -23,11 +23,12 @@ const AuthForm = (props)=> {
   return (
     <form onSubmit={ submit }>
       {
-        error ? JSON.stringify(error, null, 2) : null
+        error ? 'Username and Password don\'t match. Try again or create a new account.' : null
       }
-      <input value={ username } onChange={ ev => setUsername(ev.target.value )}/>
-      <input value={ password } onChange={ ev => setPassword(ev.target.value )}/>
+      <input name='use' placeholder='username' value={ username } onChange={ ev => setUsername(ev.target.value )}/>
+      <input name='pass' placeholder='password' value={ password } onChange={ ev => setPassword(ev.target.value )}/>
       <button disabled={!username || !password}>{ props.txt }</button>
+
     </form>
   );
 };

@@ -2,7 +2,7 @@ const Welcome = ({auth, logout, posts}) => {
 
     const activePosts = posts.filter(post => post.author._id === auth._id).length
   return (
-    <div>
+    <div className="welcome">
         <h1>
             Welcome { auth.username }!
         </h1>

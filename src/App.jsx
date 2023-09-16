@@ -47,6 +47,7 @@ function App() {
   const login = async(credentials)=> {
     const _auth = await api.login(credentials);
     setAuth(_auth);
+    navigate('/')
   };
 
   const logout = ()=> {
@@ -65,14 +66,14 @@ function App() {
   const deletePost = async (post)=> {
     const filtered = posts.filter(item => item._id !== post)
     await api.deletePost(post)
-    console.log(filtered)
     setPosts([...filtered])
     navigate('/')
   }
 
   const modifyPost = async (post)=> {
     post = await api.modifyPost(post);
-    console.log(post)
+    const updated = posts.map(item => item._id === post._id ? post : item)
+    setPosts([...updated])
   }
 
   const highestPrice = ()=> {
@@ -96,14 +97,14 @@ function App() {
             <Welcome auth={auth} posts={posts} logout={logout}/>
 
             <nav>
-              <Link to='/posts/create'>Create A Post</Link>
+              <Link className='top' to='/posts/create'>Create A Post</Link>
               <Link to='/about_us'>About Us</Link>
               <Link to='/contact_us'>Contact Us</Link>
               <Link to={`/posts/${highestPrice()}`}>Highest Listing</Link>
             </nav>
 
             <Routes>
-              <Route path='/posts/create' element={<CreatePost createPost={createPost}/>}/>
+              <Route path='/posts/create' element={<CreatePost createPost={createPost} navigate={navigate}/>}/>
               <Route path='/posts/:id' element={null} />
               <Route path='/about_us' element={null} />
               <Route path='/' element={null} />
@@ -112,8 +113,14 @@ function App() {
           </div>
         ): (
           <>
-            <AuthForm submit={ register } txt='Register'/>
-            <AuthForm submit={ login } txt='Login'/>
+            <div className='authForms'>
+              <AuthForm submit={ login} txt='Login'/>
+              <div className='landingPage'>
+                <h3>Welcome to Strangers Things.</h3>
+                <h3>Login or Register to post.</h3>
+              </div>
+              <AuthForm submit={ register } txt='Register'/>
+            </div>
             <nav>
               <Link to='/about_us'>About Us</Link>
               <Link to='/contact_us'>Contact Us</Link>
@@ -122,7 +129,7 @@ function App() {
           </>
         )
       }
-      <Posts posts={ posts } auth={ auth }/>
+
       <Routes>
         <Route path='/posts/:id' element=
         { 
@@ -137,6 +144,7 @@ function App() {
         <Route path='/' element={null} />
         <Route path='/contact_us' element={<ContactUs />} />
       </Routes>
+      <Posts posts={ posts } auth={ auth }/>
     </>
   )
 }

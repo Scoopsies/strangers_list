@@ -11,23 +11,29 @@ const Post = ({ posts, auth, deletePost, modifyPost })=> {
   }
  
   return (
-    <div>
-      <h1>{ post.title }</h1>
-      <h3>Price: {isNaN((post.price*1).toFixed(2)) ? post.price 
-              : `$${(post.price*1).toFixed(2)}`}</h3>
-      <h3>Listing by: {post.author.username}</h3>
-      <h3>Location: {post.location}</h3>
-      
-      <p>{post.description}</p>
+    <div className='post'>
+      {
+        !modify ? 
+        <div className='postContent'>
+          <h1>{ post.title }</h1>
+          <div className='postInfo'>
+            <h3>Price: {isNaN((post.price*1).toFixed(2)) ? post.price : `$${(post.price*1).toFixed(2)}`}</h3>
+            <h3>Listing by: {post.author.username}</h3>
+            <h3>Location: {post.location}</h3>
+          </div>
+          <p>{post.description}</p>
+      </div> 
+      : null
+      }
       
       {!modify ? auth._id === post.author._id ? <button onClick={() => {
-          setModify(true);
-          }}>Make Changes or Delete</button>: null : null
+        setModify(true);
+        }}>Make Changes or Delete</button>: null : null
       }  
 
-      {modify ? <ModifyPost modifyPost={modifyPost} post={post}/> : null}
-      { modify ? <button onClick={() => deletePost(id)}>Delete Post</button>: ''}
-      {modify ? <button onClick={() => setModify(false)}>Cancel</button> : null}
+      {modify ? <ModifyPost modifyPost={modifyPost} post={post} setModify={setModify}/> : null}
+      { modify ? <button className='postButton' onClick={() => deletePost(id)}>Delete Post</button>: ''}
+      {modify ? <button className='postButton' onClick={() => setModify(false)}>Cancel</button> : null}
     </div>
   );
 };

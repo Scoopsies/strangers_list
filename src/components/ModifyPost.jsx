@@ -28,11 +28,12 @@ const ModifyPost = ({
         setError(ex.response);
       }
     }
+    setModify(false)
   };
 
   return (
 
-      <form onSubmit={ submit }>
+      <form className='modifyForm' onSubmit={submit} >
         {
           error ? JSON.stringify(error, null, 2) : null
         }

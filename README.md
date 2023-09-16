@@ -29,9 +29,10 @@
 - [x] A user should be able to delete their posts from the post detail page.
 - [x] After a user deletes their posts, they should be navigated back to the / page.
 - [x] A user should be able to navigate to a **most expensive post** page which shows the post with the highest price.
-- [] A user should be able to update their posts on the detail page. 
-- [] After a user updates their post, they should be navigated back to the / page.
-- [] A user should be able to view the site on mobile device.
+- [x] A user should be able to update their posts on the detail page. 
+- [x] After a user updates their post, they should be navigated back to the / page.
+    // ^^ I took liberties with this one and stayed on the updated page but had it updated. ^^
+- [x] A user should be able to view the site on mobile device.
 - [x] Prices which are not numbers, should be displayed correctly.
 - [x] A user should be able to add a location to their posts (see api documentation).
 - [x] The location should appear in the post listing

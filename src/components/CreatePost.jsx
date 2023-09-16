@@ -1,12 +1,17 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-const CreatePost = ({ createPost })=> {
+const CreatePost = ({ createPost, navigate })=> {
   const [location, setLocation] = useState('')
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState('');
   const [title, setTitle] = useState('');
   const [error, setError] = useState('');
+
+  const routeChange = () =>{ 
+    let path = `/`; 
+    navigate(path);
+  }
 
   const submit = async(ev)=> {
     ev.preventDefault();
@@ -24,8 +29,8 @@ const CreatePost = ({ createPost })=> {
     }
   };
   return (
-    <div>
-      <form onSubmit={ submit }>
+    <div className='create'>
+      <form className='createForm' onSubmit={ submit }>
         {
           error ? JSON.stringify(error, null, 2) : null
         }
@@ -33,9 +38,9 @@ const CreatePost = ({ createPost })=> {
         <input name='description' placeholder='description' onChange={ev => setDescription(ev.target.value)} />
         <input name='price' placeholder='price' onChange={ev => setPrice(ev.target.value)} />
         <input name='location' placeholder='location' onChange={ev => setLocation(ev.target.value)} />
-        <button>Create</button>
+        <button>Submit Post</button>
+        <button onClick={() => routeChange()}>Cancel</button>
       </form>
-      <Link to='/'>Cancel</Link>
     </div>
   );
 };
