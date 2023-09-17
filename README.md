@@ -1,5 +1,7 @@
 # Strangers Things 
 
+- https://comforting-douhua-5341ce.netlify.app/
+
 - npm install
 - npm run dev
 
@@ -22,7 +24,7 @@
 # Tasks
 
 - [x] A user should see some content on the about us page.
-- [-] A user should be able to navigate to a contact us page.
+- [x] A user should be able to navigate to a contact us page.
 - [x] The login/register button should be disabled if a username or password is not provided.
 - [x] A user should see the author of the post next to the post listing.
 - [x] The description for the posts should be visible on the post detail page.
@@ -38,5 +40,5 @@
 - [x] The location should appear in the post listing
 - [x] The welcome message should show the number of posts the logged in user has.
 
-- [] The site should be deployed
+- [x] The site should be deployed
 
