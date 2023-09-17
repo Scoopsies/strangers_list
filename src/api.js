@@ -57,7 +57,6 @@ const createPost = async(post)=> {
 
 const deletePost = async (id)=> {
   const token = window.localStorage.getItem('token');
-  console.log(id)
   await axios.delete(
     `${BASE_URL}/posts/${id}`,
     

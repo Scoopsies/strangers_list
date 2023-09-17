@@ -6,6 +6,7 @@ const Post = ({ posts, auth, deletePost, modifyPost })=> {
   const { id } = useParams();
   const post = posts.find(post => post._id === id);
   const [modify, setModify] = useState(false)
+  // console.log(id)
   if(!post){
     return null;
   }
@@ -31,9 +32,7 @@ const Post = ({ posts, auth, deletePost, modifyPost })=> {
         }}>Make Changes or Delete</button>: null : null
       }  
 
-      {modify ? <ModifyPost modifyPost={modifyPost} post={post} setModify={setModify}/> : null}
-      { modify ? <button className='postButton' onClick={() => deletePost(id)}>Delete Post</button>: ''}
-      {modify ? <button className='postButton' onClick={() => setModify(false)}>Cancel</button> : null}
+      {modify ? <ModifyPost modifyPost={modifyPost} post={post} setModify={setModify} deletePost={deletePost} /> : null}
     </div>
   );
 };

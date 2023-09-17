@@ -8,6 +8,8 @@ const CreatePost = ({ createPost, navigate })=> {
   const [title, setTitle] = useState('');
   const [error, setError] = useState('');
 
+
+
   const routeChange = () =>{ 
     let path = `/`; 
     navigate(path);
@@ -39,7 +41,7 @@ const CreatePost = ({ createPost, navigate })=> {
         <input name='price' placeholder='price' onChange={ev => setPrice(ev.target.value)} />
         <input name='location' placeholder='location' onChange={ev => setLocation(ev.target.value)} />
         <button>Submit Post</button>
-        <button onClick={() => routeChange()}>Cancel</button>
+        <button type='button' onClick={() => routeChange()}>Cancel</button>
       </form>
     </div>
   );

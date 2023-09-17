@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 const ModifyPost = ({
   modifyPost,
   post,
-  setModify
+  setModify,
+  deletePost
  })=> {
   const [location, setLocation] = useState(post.location)
   const [price, setPrice] = useState(post.price);
@@ -42,6 +43,9 @@ const ModifyPost = ({
         <input name='price' defaultValue={post.price} onChange={ev => setPrice(ev.target.value)} />
         <input name='location' defaultValue={post.location} onChange={ev => setLocation(ev.target.value)} />
         <button>Modify</button>
+        <button className='delete' type='button'  onClick={() => deletePost(id)}>Delete</button>
+        <button type='button'  onClick={() => setModify(false)}>Cancel</button>
+
       </form>
 
   );

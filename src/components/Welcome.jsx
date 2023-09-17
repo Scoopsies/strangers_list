@@ -10,7 +10,7 @@ const Welcome = ({auth, logout, posts}) => {
         {
          activePosts === 0 ? 'You have no active listings.'
          : activePosts === 1 ? 'You have 1 active listing.'
-         : `You have ${activePosts} listings.`   
+         : `You have ${activePosts} active listings.`   
         }
         </h2>
         <button onClick={ logout }>Logout</button>

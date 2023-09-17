@@ -19,11 +19,11 @@ const AuthForm = (props)=> {
       }
     }
   };
-
+  
   return (
     <form onSubmit={ submit }>
       {
-        error ? 'Username and Password don\'t match. Try again or create a new account.' : null
+        error ? error.error.message : null
       }
       <input name='use' placeholder='username' value={ username } onChange={ ev => setUsername(ev.target.value )}/>
       <input name='pass' placeholder='password' value={ password } onChange={ ev => setPassword(ev.target.value )}/>
