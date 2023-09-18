@@ -16,8 +16,8 @@ const NavBar = ({posts, auth, location}) => {
     return (
         <nav>
         { auth.username ? <Link className={ location.pathname === '/posts/create' ? 'navSelect' : ''} to='/posts/create'>Create A Post</Link> : null}
-        <Link className={ location.pathname === '/posts/about_us' ? 'navSelect' : ''} to='/posts/about_us'>About Us</Link>
-        <Link className={ location.pathname === '/posts/contact_us' ? 'navSelect' : ''} to='/posts/contact_us'>Contact Us</Link>
+        <Link className={ location.pathname === '/about_us' ? 'navSelect' : ''} to='/about_us'>About Us</Link>
+        <Link className={ location.pathname === '/contact_us' ? 'navSelect' : ''} to='/contact_us'>Contact Us</Link>
         <Link className={ location.pathname === `/posts/${highestPrice()}` ? 'navSelect' : ''} to={`/posts/${highestPrice()}`}>Highest Listing</Link>
     </nav>
     )

@@ -15,7 +15,6 @@ const register = async(credentials)=> {
   const token = response.data.data.token;
   window.localStorage.setItem('token', token);
   return loginWithToken();
-
 };
 
 const loginWithToken = async()=> {
@@ -102,7 +101,6 @@ const api = {
   createPost,
   deletePost,
   modifyPost
-
 };
 
 export default api;

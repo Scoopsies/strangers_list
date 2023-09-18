@@ -62,6 +62,7 @@ h1 {
 .postContent {
   display: flex;
   flex-direction: column;
+  text-align: center;
 }
 
 .listing {
@@ -126,6 +127,7 @@ h1 {
   display: flex;
   justify-content: space-around;
 }
+
 
 button,
 form > button {

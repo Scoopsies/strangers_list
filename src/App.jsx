@@ -87,10 +87,10 @@ function App() {
 
             <Routes>
               <Route path='/posts/create' element={<CreatePost createPost={createPost} navigate={navigate}/>}/>
-              <Route path='/posts/about_us' element={null} />
+              <Route path='/about_us' element={null} />
               <Route path='/posts/:id' element={null} />
               <Route path='/' element={null} />
-              <Route path='/posts/contact_us' element={null} />
+              <Route path='/contact_us' element={null} />
             </Routes>
           </div>
         ): (
@@ -112,16 +112,11 @@ function App() {
       <Routes>
         <Route path='/posts/:id' element=
         { 
-        <Post 
-          posts={ posts } 
-          auth={ auth } 
-          deletePost={deletePost}
-          modifyPost={modifyPost} 
-        />
+        <Post posts={ posts } auth={ auth } deletePost={deletePost} modifyPost={modifyPost}/>
         }/>
-        <Route path='/posts/about_us' element={ <AboutUs />} />
+        <Route path='/about_us' element={ <AboutUs />} />
         <Route path='/' element={null} />
-        <Route path='/posts/contact_us' element={<ContactUs />} />
+        <Route path='/contact_us' element={<ContactUs />} />
       </Routes>
       <Posts posts={ posts } auth={ auth }/>
     </>
